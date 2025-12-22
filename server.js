@@ -8,10 +8,14 @@ const app = express();
 const server = http.createServer(app);
 
 // use environment var for port (deployed hosts often set PORT)
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 
 // configure allowed origin(s) for CORS
-const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'http://127.0.0.1:5500';
+const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || [
+  'http://localhost:3000',
+  'http://127.0.0.1:3000',
+  'http://127.0.0.1:5500'
+];
 
 const io = new Server(server, {
   cors: {
