@@ -13,6 +13,7 @@ Click here to get on Online Version: [grateful-francene-maynoothuniversity-7d578
 <img width="1612" height="920" alt="Image" src="https://github.com/user-attachments/assets/62690372-f291-4e2a-a79f-b5ed7ccda837" />
 
 
+
 ## Table of Contents  
 - [Features](#features)  
 - [Technologies](#technologies)  
@@ -64,7 +65,8 @@ Click here to get on Online Version: [grateful-francene-maynoothuniversity-7d578
 - [Node.js](https://nodejs.org/) – JavaScript runtime  
 - Express – web server  
 - Socket.IO – real-time WebSocket library  
-- HTML/CSS – frontend chat UI
+- React + Vite – frontend app  
+- Tailwind CSS + shadcn/ui – UI components and styling
 
 ## Getting Started  
 
@@ -86,17 +88,31 @@ You’ll need:
    ```bash
    npm install
    ```
-3. Running the code in your terminal
+3. Install client dependencies
    ```bash
-   npm run devStart
-4. You can locally host this Website. :)
-   ```bash
-   http://localhost:8000/
+   npm --prefix client install
    ```
+4. Running the code in your terminal (two terminals)
+   ```bash
+   npm run dev:server
+   npm run dev:client
+   ```
+5. Open the app
+   ```bash
+   http://localhost:5173/
+   ```
+
+### Production build
+```bash
+npm run build
+npm start
+```
 ## Project-Structure  
 ```
- ├── Server.js  ← socket.io and shakehands
- └── index.html  ← webpage-preview  
+ ├── server.js          ← Express + Socket.IO server
+ ├── client/            ← Vite + React frontend
+ │   ├── src/
+ │   ├── index.html
+ │   └── vite.config.js
+ └── package.json       ← server scripts
 ```
-
-

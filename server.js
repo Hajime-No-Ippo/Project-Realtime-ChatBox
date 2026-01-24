@@ -11,11 +11,9 @@ const server = http.createServer(app);
 const PORT = process.env.PORT || 8000;
 
 // configure allowed origin(s) for CORS
-const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || [
-  'http://localhost:3000',
-  'http://127.0.0.1:3000',
-  'http://127.0.0.1:5500'
-];
+const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN
+  ? process.env.CLIENT_ORIGIN.split(',').map(origin => origin.trim())
+  : true;
 
 const io = new Server(server, {
   cors: {
@@ -27,10 +25,12 @@ const io = new Server(server, {
 });
 
 const path = require('path');
-app.use(express.static(path.join(__dirname, 'public')));
+const clientDistPath = path.join(__dirname, 'client', 'dist');
+
+app.use(express.static(clientDistPath));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(clientDistPath, 'index.html'));
 });
 
 
