@@ -10,7 +10,8 @@
     "start": "node server.js",
     "dev:server": "nodemon server.js",
     "dev:client": "npm --prefix client run dev",
-    "build": "npm --prefix client run build"
+    "build": "npm --prefix client run build",
+    "postinstall": "npm --prefix client install"
   },
   "dependencies": {
     "express": "^5.1.0",
